@@ -139,3 +139,45 @@ console.dir(h1.__proto__);
 
 // the function itself is also an object, thus they have a prototype
 console.dir(x => x + 1);
+
+//////////////////////////////////////////////////////////////////
+// 213. ES6 Classes
+
+// they're just syntactic sugar
+// makes more sense for people coming from other programming backgrounds
+// classes in JS, are still jsut functions
+
+// class expression
+// const PersonCl = class {};
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = Number(birthYear);
+  }
+
+  calcAge() {
+    const now = new Date().getFullYear();
+    console.log(`${this.firstName} is ${now - this.birthYear} years old`);
+  }
+}
+
+PersonCl.prototype.greet = function () {
+  console.log(
+    `Hello, ${this.firstName.replace(
+      this.firstName[0],
+      this.firstName[0].toUpperCase()
+    )}!`
+  );
+};
+
+const jessica = new PersonCl('jessica', 1996);
+jessica.greet();
+jessica.calcAge();
+console.log(jessica.__proto__ === PersonCl.prototype);
+
+// classes are NOT hoisted, even when they're declared
+// hoisting - allowing to use something before it's declared in the code
+// classes are first-class citizens, since they're functions behind the sceness
+// the body of a class is always executed in a strict mode
