@@ -92,3 +92,50 @@ the prototype chain is a series of links between objects, linked through prototy
 */
 
 console.log(Object.prototype === Person.__proto__);
+
+//////////////////////////////////////////////////////////////////
+// 211. Prototypal Inheritance on Built-In Objects
+
+console.log(jonas.__proto__);
+Person.prototype.MyNewProp = `nani desu ka?!`;
+Person.prototype.anotherFuncInTheStack = function () {
+  console.log(`Pink Freud`);
+};
+console.log(jonas.__proto__);
+jonas.anotherFuncInTheStack();
+
+// moving up the prototype chain
+// Object.prototype is the TOP of the chain
+console.log(jonas.__proto__.__proto__ === Object.prototype);
+
+console.log(Person.prototype.constructor);
+console.dir(Person.prototype.constructor);
+
+const arr = [2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5];
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+// expanding methods of built-in objects is as simple as ...
+Array.prototype.myFunc = function () {
+  console.log(`Hello world, from another world!`);
+};
+
+arr.myFunc();
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+console.log(...new Array(10).fill(9).unique());
+
+// adding new stuff to prototypes is nice and dandy, until you start messing with built-in methods OR next ECMAScript edition allocates keyword used by your own custom stuff
+// it's a disaster just waiting to happen
+const h1 = document.querySelector('h1');
+// getting the actual object, not just the element
+console.dir(h1);
+console.dir(h1.__proto__);
+
+// the function itself is also an object, thus they have a prototype
+console.dir(x => x + 1);
