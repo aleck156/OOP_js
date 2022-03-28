@@ -45,4 +45,37 @@ OOP was developed with the goal of organizing code, to make it more flexible and
 // POLYMORPHISM
 + a child class can overwrite a method it inherited from a parent class
 
+//////////////////////////////////////////
+// 207. OOP in JavaScript
+
++ instantioation - creating an instance from a class blueprint
+
++ PROTOTYPES
++ objects are linked to a prototype object
++ contains methods and properties that all children can use
++ prototypal inheritance
+    + the prototype contains methods that are accessible to all objects linked to taht prototype
++ in JS, it's an instance inheriting from a class, not a class inheriting from another class like in regular OOP it would be
+
++ behavior is delegated to the linked prototype object
++ objects delegate the behavior to their prototype
++ the arrows goes UP, from object to the prototype
+    + in OOP, the arrow goes DOWN, from class to instance
+
+// example
+Array.prototype.map()
+
+// 3 WAYS OF IMPLEMENTING PROTOTYPAL INHERITANCE IN JAVASCRIPT
+
+// 1. constructor functions
++ technique to create objects programmatically from a funcion
++ this is how built-in objects like Array, Map or Set are actually implemented
+
+// 2. ES6 classes
++ more modern way
++ syntactic sugar: behind the scenes, ES6 classes work exactly like constructor functions
++ ES6 classes do NOT behave like classes in classical OOP
+
+// 3. Object.create()
++ the easiest and most straightforward way of linking an object to a prototype object
 */
