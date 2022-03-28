@@ -14,9 +14,13 @@ const Person = function (firstName, birthYear) {
 };
 
 const jonas = new Person('Jonas', 1986);
+const matilda = new Person('Matilda', 1993);
+const jack = new Person('Jack', 1973);
 console.log(jonas);
 
 console.log(jonas instanceof Person);
+console.log(matilda instanceof Person);
+console.log(jack instanceof Person);
 
 /*
 1. new empty object is created
@@ -36,7 +40,7 @@ it's merely a pattern developed by coders
 + each and every function has a property called property
 + every object will have access to it
 
-
+__proto
 
 */
 
@@ -49,3 +53,42 @@ Person.prototype.calcAge = function () {
 console.log(Person.prototype);
 
 jonas.calcAge();
+matilda.calcAge();
+jack.calcAge();
+
+console.log('jonas proto: ', jonas.__proto__);
+
+console.log(jonas.__proto__ === Person.prototype);
+console.log(Person.prototype.isPrototypeOf(jonas));
+
+// setting up properties on prototypes
+Person.prototype.species = 'Homo Sapiens';
+console.log(jonas.species);
+console.log(matilda.species);
+
+console.log(jonas.hasOwnProperty('species'));
+
+/* the *new* operator
+1. an empty object is created
+2. *this* keyword in constructor function call is set to the new operator
+3. the new object is linked (adding __proto__ property to the object) to the constructor function's prototype property
+    __proto__ always points to the objects prototype
+4. a new object is returned from the function
+    unless we *explicitly* return something else
+
+that's how it works with
++ function constructors
++ ES6+ classes
+
+THIS IS NOT HOW ITWORKS WITH OBJECT.CREATE
+
+THE PROTOTYPE CHAIN
+
+Object.prototype is at the top of prototype chaining
+whenever we create object literal, Object() constructor function is called FIRST, behind the scene
+    Object.prototype
+
+the prototype chain is a series of links between objects, linked through prototypes
+*/
+
+console.log(Object.prototype === Person.__proto__);
