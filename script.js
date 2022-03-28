@@ -6,17 +6,17 @@ const Person = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
 
-  this.calcAge = function () {
-    const now = new Date().getFullYear();
-    console.log(now - this.birthYear);
-  };
+  // creating and defining methods in constructor function is a bad practice
+  // each time you create a new instance of that class, it's created with all those methods anew
+  // this takes TONS of memory space for something that is repetitive among all of instances!
+
+  // prototypes and prototype inheritance is the way!
 };
 
 const jonas = new Person('Jonas', 1986);
 console.log(jonas);
 
 console.log(jonas instanceof Person);
-jonas.calcAge();
 
 /*
 1. new empty object is created
@@ -27,5 +27,25 @@ jonas.calcAge();
 4. function automatically returns that empty object
     the object is no longer empty
 
+OOP is not a feature of Js
+it's merely a pattern developed by coders
+*/
+
+// PROTOTYPES
+/*
++ each and every function has a property called property
++ every object will have access to it
+
+
 
 */
+
+// the proper way of adding functions and methods to your classes
+Person.prototype.calcAge = function () {
+  const now = new Date().getFullYear();
+  console.log(now - this.birthYear);
+};
+
+console.log(Person.prototype);
+
+jonas.calcAge();
