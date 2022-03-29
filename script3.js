@@ -26,8 +26,8 @@ class PersonCl {
   }
 
   set fullName(name) {
-    if (name.includes('')) this._fullName = name;
-    else alert(`${this} is not a full name!`);
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
   }
 
   get fullName() {
