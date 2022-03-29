@@ -156,7 +156,7 @@ class PersonCl {
     this.firstName = firstName;
     this.birthYear = Number(birthYear);
   }
-
+  // instance methods, that will be added to .prototype property
   calcAge() {
     const now = new Date().getFullYear();
     console.log(`${this.firstName} is ${now - this.birthYear} years old`);
