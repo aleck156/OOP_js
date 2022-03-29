@@ -45,6 +45,12 @@ class StudentCl extends PersonCl {
     super(fullName, birthYear);
     this.course = course;
   }
+
+  introduce() {
+    console.log(
+      `Hi, my name is ${this.firstName}, I was born in ${this.birthYear}, and I study ${this.course}`
+    );
+  }
 }
 
 const thomas = new StudentCl('Thomas Anderson', 1973, 'Computer Science');
