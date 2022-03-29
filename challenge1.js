@@ -54,3 +54,18 @@ EV.prototype.accelerate = function () {
 };
 
 const firstEV = new EV('Hyundai', 130, 100);
+firstEV.accelerate();
+firstEV.accelerate();
+firstEV.accelerate();
+firstEV.accelerate();
+firstEV.accelerate();
+firstEV.accelerate();
+
+const secondEV = new EV('Tesla', 120, 23);
+secondEV.accelerate();
+secondEV.accelerate();
+secondEV.accelerate();
+secondEV.accelerate();
+secondEV.accelerate();
+secondEV.brake();
+secondEV.chargeBattery(90);
