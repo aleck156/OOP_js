@@ -42,3 +42,10 @@ mike.introduce();
 // calling methods from parent class does not work ... yet
 // but once we connect Student.prototype with Person.prototype with Object.create, it works!
 mike.calcAge();
+
+// adding new functionality to Person class gets propagated to all children that inherit from that class
+Person.prototype.testing = function () {
+  console.log(`testNG`);
+};
+
+mike.testing();
