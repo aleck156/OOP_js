@@ -47,7 +47,7 @@ EV.prototype.chargeBattery = function (chargeTo) {
 
 EV.prototype.accelerate = function () {
   this.speed += 20;
-  this.charge = this.charge * 0.99;
+  this.charge--;
   console.log(
     `${this.make} is going at ${this.speed}, with a charge of ${this.charge}`
   );
