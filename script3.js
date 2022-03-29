@@ -6,7 +6,7 @@
 // classes hdie a lot of details that js runs underneath
 // they're merely a layer of abstraction
 class PersonCl {
-  construct(fullName, birthYear) {
+  constructor(fullName, birthYear) {
     this.fullName = fullName;
     this.birthYear = birthYear;
   }
