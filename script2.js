@@ -27,7 +27,7 @@ const Student = function (firstName, birthYear, course) {
 
 Student.prototype.introduce = function () {
   console.log(
-    `Hi, my name is ${this.firstName}, I was born in ${this.birthYear}, and I am studying ${this.course}`
+    `Hi, my name is ${this.firstName}, I was born in ${this.birthYear}, and I study ${this.course}`
   );
 };
 
