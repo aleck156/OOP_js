@@ -31,3 +31,26 @@ console.log(myCar.make, myCar.speed);
 
 const myCar1 = new Car('BMW', 120);
 const myCar2 = new Car('Mercedes', 95);
+
+// CHALLENGE #3
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+
+// connect Car.prototype to EV.prototype, making it into a proper inheritance
+EV.prototype = Object.create(Car.prototype);
+
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+};
+
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge = this.charge * 0.99;
+  console.log(
+    `${this.make} is going at ${this.speed}, with a charge of ${this.charge}`
+  );
+};
+
+const firstEV = new EV('Hyundai', 130, 100);
