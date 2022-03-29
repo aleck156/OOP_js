@@ -18,3 +18,9 @@ Person.prototype.calcAge = function () {
   const now = new Date().getFullYear();
   console.log(now - this.birthYear);
 };
+
+const Student = function (firstName, birthYear, course) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+  this.course = course;
+};
