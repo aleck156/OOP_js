@@ -25,5 +25,13 @@ const Student = function (firstName, birthYear, course) {
   this.course = course;
 };
 
+Student.prototype.introduce = function () {
+  console.log(
+    `Hi, my name is ${this.firstName}, I was born in ${this.birthYear}, and I am studying ${this.course}`
+  );
+};
+
 const mike = new Student('Mike', 2020, 'Computer Science');
 console.log(mike);
+
+mike.introduce();
