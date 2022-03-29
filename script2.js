@@ -26,7 +26,10 @@ const Student = function (firstName, birthYear, course) {
 
 // with this line, Student class inherits all of methods available to Person class
 // it has to be added BEFORE any other methods are added to the Student.prototype
+// this also makes a constructor of Student.prototype to be of Person.prototype
 Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.constructor = Student;
 
 Student.prototype.introduce = function () {
   console.log(
@@ -49,3 +52,14 @@ Person.prototype.testing = function () {
 };
 
 mike.testing();
+
+// Object.prototype still sits at the top of prototype chain
+// we can call whatever method is there, once we call Object.create()
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+console.log(mike.__proto__.__proto__.__proto__);
+
+console.dir(Student.prototype.constructor);
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
