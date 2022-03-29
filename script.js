@@ -161,6 +161,10 @@ class PersonCl {
     const now = new Date().getFullYear();
     console.log(`${this.firstName} is ${now - this.birthYear} years old`);
   }
+
+  get age() {
+    return new Date().getFullYear() - this.birthYear;
+  }
 }
 
 PersonCl.prototype.greet = function () {
@@ -176,8 +180,52 @@ const jessica = new PersonCl('jessica', 1996);
 jessica.greet();
 jessica.calcAge();
 console.log(jessica.__proto__ === PersonCl.prototype);
+console.log(`ageism ... ${jessica.age}`);
 
 // classes are NOT hoisted, even when they're declared
 // hoisting - allowing to use something before it's declared in the code
 // classes are first-class citizens, since they're functions behind the sceness
 // the body of a class is always executed in a strict mode
+
+//////////////////////////////////////////////////////////////////
+// 214. Setters and Getters
+
+const account = {
+  owner: 'Jonas',
+  movements: [200, 530, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  // setters need to have exactly one parameter
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+// despite being a method, we invoke it like a property
+// both getters and setters
+console.log(account.latest);
+
+account.latest = 750;
+console.log(account.latest);
+
+// setters and getters are useful for data validation
+
+//////////////////////////////////////////////////////////////////
+// 215. Static Methods
+
+// static methods do not work on instances of classes, only on constructors
+// not on prototypes
+// we use them on constructors to create new objects/instances
+
+// implementing static methods for constructor functions and classes
+Person.heyJoe = function () {
+  console.log(`hey, Joe ...`);
+  console.log(this);
+};
+
+Person.heyJoe();
+// not inherited, because it's not in its prototype
+// jack.heyJoe();s
