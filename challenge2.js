@@ -20,8 +20,8 @@ class Car {
     return this.speed / 1.6;
   }
 
-  set speedUS(_) {
-    this.speedUS = this.speed * 1.6;
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
   }
 }
 
