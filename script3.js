@@ -2,7 +2,10 @@
 
 //////////////////////////////////////////////////////////////////
 // 220. Inheritance Between "Classes": ES6 Classes
-class PersonCL {
+
+// classes hdie a lot of details that js runs underneath
+// they're merely a layer of abstraction
+class PersonCl {
   construct(fullName, birthYear) {
     this.fullName = fullName;
     this.birthYear = birthYear;
@@ -36,3 +39,13 @@ class PersonCL {
     console.log(`hey there!`);
   }
 }
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    super(fullName, birthYear);
+    this.course = course;
+  }
+}
+
+const thomas = new StudentCl('Thomas Anderson', 1973, 'Computer Science');
+console.log(thomas);
