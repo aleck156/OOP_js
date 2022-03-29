@@ -37,3 +37,9 @@ car1.accelerate();
 console.log(car2.speedUS);
 
 const car3 = new Car('ford', 120);
+
+// CHALLENGE #3
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
