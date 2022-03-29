@@ -70,6 +70,9 @@ thomas.calcAge();
 //////////////////////////////////////////////////////////////////
 // 221. Inheritance Between "Classes": Object.create
 
+// this is the preferred way
+// we are not trying to fake classes, but actually properly linking objects together
+
 const PersonProto = {
   calcAge() {
     const now = new Date().getFullYear();
@@ -85,4 +88,18 @@ const PersonProto = {
 const steven = Object.create(PersonProto);
 
 const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+StudentProto.introduce = function () {
+  console.log(
+    `Hi, my name is ${this.fullName}, I was born in ${this.birthYear}, and I study ${this.course}`
+  );
+};
+
 const jay = Object.create(StudentProto);
+jay.init('Jay', 2007, 'Electrical Engineering');
+jay.introduce();
+jay.calcAge();
