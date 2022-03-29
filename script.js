@@ -235,3 +235,42 @@ Person.heyJoe();
 // jack.heyJoe();s
 
 PersonCl.heyJoe();
+
+//////////////////////////////////////////////////////////////////
+// 216. Object.create
+
+// works very differently from classes and constructor functions
+
+// no constructor functions
+// no .prototype propertie
+// no *new* operator
+
+// it's just an object literal!
+// in constructor functions, it was a function
+const PersonProto = {
+  calcAge() {
+    const now = new Date().getFullYear();
+    console.log(`${this.firstName} is ${now - this.birthYear} years old`);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+// we manually set the prototype
+const steven = Object.create(PersonProto);
+steven.birthYear = 1986;
+steven.firstName = 'Steven';
+steven.calcAge();
+
+// it's the least used way of creating classes
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+sarah.init('sarah JP', 1997);
+sarah.calcAge();
+
+// just use constructor functions
+// everyone knows it, everyone uses it
