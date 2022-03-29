@@ -165,6 +165,10 @@ class PersonCl {
   get age() {
     return new Date().getFullYear() - this.birthYear;
   }
+
+  static heyJoe() {
+    console.log(`hey, Joe ...`);
+  }
 }
 
 PersonCl.prototype.greet = function () {
@@ -229,3 +233,5 @@ Person.heyJoe = function () {
 Person.heyJoe();
 // not inherited, because it's not in its prototype
 // jack.heyJoe();s
+
+PersonCl.heyJoe();
